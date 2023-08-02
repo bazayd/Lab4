@@ -9,12 +9,15 @@ public class Main {
 
         BSTSearchTree binarySearchTree = new BSTSearchTree();
 
-        binarySearchTree.insert(new Dollar(57.12));
-        binarySearchTree.insert(new Dollar(23.44));
-        binarySearchTree.insert(new Dollar(87.43));
+        binarySearchTree.insert(new Dollar(57.12)); // Root
+        binarySearchTree.insert(new Dollar(23.44)); // Left Child
+        binarySearchTree.insert(new Dollar(87.43)); // Right Child
 
-        binarySearchTree.printBST(binarySearchTree.root, "");
 
+
+        binarySearchTree.delete();
+
+        binarySearchTree.InOrderTraversal(binarySearchTree.root);
 
 
     }

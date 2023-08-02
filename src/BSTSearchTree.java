@@ -1,4 +1,5 @@
 import java.util.function.BinaryOperator;
+import java.util.*;
 
 public class BSTSearchTree {
 
@@ -79,6 +80,62 @@ public class BSTSearchTree {
            }
         }
 
+    }
+
+    public void delete(Currency dollar) {
+        root = delete(dollar, root);
+    }
+
+    private BSTNode delete(Currency dollar, BSTNode root) {
+        if (root == null) {
+            return null;
+        }
+        // If dollar value is less than root value go to left child
+        if (!dollar.isGreater(root.getData())) {
+            root.setLeftChild(delete(dollar, root.getLeftChild()));
+            // if dollar value is greater than root value check right child
+        } else if (dollar.isGreater(root.getData())) {
+            root.setRightChild(delete(dollar, root.getRightChild()));
+        }else {
+            // Cases for leaf nodes or one child cases
+            if (root.getLeftChild() == null) {
+                return root.getRightChild();
+            } else if (root.getRightChild() == null) {
+                return root.getLeftChild();
+            }
+            root.setData(getMax(root.getLeftChild()));
+            root.setLeftChild(delete(root.getData(), root.getLeftChild()));
+        }
+        return root;
+    }
+
+
+    public Currency getMin() {
+        if (root == null) {
+            return null;
+        }
+        return getMin(root);
+    }
+
+    private Currency getMin(BSTNode node) {
+        if (node.getLeftChild() != null) {
+            return getMin(node.getLeftChild());
+        }
+        return node.getData();
+    }
+
+    public Currency getMax() {
+        if (root == null) {
+            return null;
+        }
+        return getMax(root);
+    }
+
+    private Currency getMax(BSTNode node) {
+        if (node.getRightChild() != null) {
+            return getMax(node.getRightChild());
+        }
+        return node.getData();
     }
 
     public void InOrderTraversal(BSTNode root) {
