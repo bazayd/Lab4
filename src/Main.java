@@ -15,7 +15,7 @@ public class Main {
 
 
 
-        binarySearchTree.delete();
+
 
         binarySearchTree.InOrderTraversal(binarySearchTree.root);
 
