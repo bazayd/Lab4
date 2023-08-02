@@ -55,21 +55,30 @@ public class BSTSearchTree {
     }
 
     public void insert(Currency dollar) {
-        root = RecursiveInsert(root, dollar);
+        if (root == null) {
+            root = new BSTNode(dollar);
+        } else {
+            RecursiveInsert(root, dollar);
+        }
     }
 
-    public BSTNode RecursiveInsert(BSTNode root, Currency dollar) {
-        if (root == null) {
-            return new BSTNode(dollar);
-        }else if (!dollar.isGreater(root.getData())) {
-            BSTNode leftChild = root.getLeftChild();
-            leftChild = RecursiveInsert(root.leftChild , dollar);
+    private void RecursiveInsert(BSTNode root, Currency dollar) {
+        if (!dollar.isGreater(root.getData())) {
+            if (root.getLeftChild() == null) {
+                BSTNode newNode = new BSTNode(dollar);
+                root.setLeftChild(newNode);
+            }else {
+                RecursiveInsert(root.getLeftChild(), dollar);
+            }
         }else if (dollar.isGreater(root.getData())) {
-            BSTNode rightChild = root.getRightChild();
-            rightChild = RecursiveInsert(root.rightChild , dollar);
+           if (root.getRightChild() == null) {
+               BSTNode newNode = new BSTNode(dollar);
+               root.setRightChild(newNode);
+           } else {
+               RecursiveInsert(root.getRightChild(), dollar);
+           }
         }
 
-        return root;
     }
 
     public void InOrderTraversal(BSTNode root) {

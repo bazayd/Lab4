@@ -15,7 +15,7 @@ public class Main {
 
         binarySearchTree.printBST(binarySearchTree.root, "");
 
-        binarySearchTree.InOrderTraversal(binarySearchTree.root);
+
 
     }
 }
