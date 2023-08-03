@@ -159,7 +159,15 @@ public class BSTSearchTree {
         PreorderTraversal(node.getRightChild());
     }
 
-    public void PostorderTraversal() {
+    public void PostorderTraversal(BSTNode node) {
+        if (node == null) {
+            return;
+        }
+
+
+        PreorderTraversal(node.getLeftChild());
+        PreorderTraversal(node.getRightChild());
+        System.out.println(node.getData());
 
     }
 

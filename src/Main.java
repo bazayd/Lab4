@@ -16,8 +16,12 @@ public class Main {
 
 
 
-
+        System.out.println("In Order : ");
         binarySearchTree.InOrderTraversal(binarySearchTree.root);
+        System.out.println("Pre Order: ");
+        binarySearchTree.PreorderTraversal(binarySearchTree.root);
+        System.out.println("Post Order: ");
+        binarySearchTree.PostorderTraversal(binarySearchTree.root);
 
 
     }
