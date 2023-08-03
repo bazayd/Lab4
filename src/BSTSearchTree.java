@@ -171,12 +171,37 @@ public class BSTSearchTree {
 
     }
 
-    public void BreadthFirstTraversal() {
-
+    public void BreadthFirstTraversal(BSTNode root) {
+    	BSTNode curNode = root;
+    	Queue bfQueue = new Queue();
+    	
+    	
+    	while(curNode != null) {
+    		if (curNode.getLeftChild() != null) {
+    			bfQueue.enQueue(curNode.getLeftChild().getData());
+    		}
+    		if (curNode.getRightChild() != null) {
+    			bfQueue.enQueue(curNode.getRightChild().getData());
+    		}
+    		if (root != null) {
+        		curNode.setData(bfQueue.deQueue());
+        	}else {
+        		curNode = null;
+        	}
+    	}
     }
 
-    public Dollar search() {
-        return null;
+    public Currency search(BSTNode root, BSTNode target) {
+        if (root == null) {
+        	return null;
+        }
+        if (root.getData().isGreater(target.getData())) {
+        	return search(root.getLeftChild(), target);
+        }else if (target.getData().isGreater(root.getData())) {
+        	return search(root.getRightChild(), target);
+        }else {
+        	return root.getData();
+        }
     }
 
     public void printBST(BSTNode root, String BSTString) {
