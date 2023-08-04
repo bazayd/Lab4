@@ -10,8 +10,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         BSTSearchTree binarySearchTree = new BSTSearchTree();
-
-
+        
         Dollar[] dollars = {
                 new Dollar(57.12),
                 new Dollar(23.44),
@@ -38,7 +37,11 @@ public class Main {
         for (Dollar dollar: dollars) {
             binarySearchTree.insert(dollar);
         }
-
+        
+        System.out.println("BreadthFirst: ");
+        binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
+        
+        
         boolean quit = false;
 
 
@@ -51,8 +54,7 @@ public class Main {
             System.out.println("(5) Quit");
 
 //<<<<<<< HEAD
-//        System.out.println("BreadthFirst: ");
-//        binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
+        
 //        System.out.println("In Order : ");
 //        binarySearchTree.InOrderTraversal(binarySearchTree.root);
 //        System.out.println("Pre Order: ");
@@ -114,8 +116,6 @@ public class Main {
 //        System.out.println("Post Order: ");
 //        binarySearchTree.PostorderTraversal(binarySearchTree.root);
 
-//>>>>>>> d8c39a0ac91602d4822460dafcc89b9322f8e28a
-
-
+//
     }
 }

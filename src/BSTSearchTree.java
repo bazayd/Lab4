@@ -26,6 +26,10 @@ public class BSTSearchTree {
         public Currency getData() {
             return data;
         }
+        
+//        public void setRoot(BSTNode root) {
+//        	this.root = root;
+//        }
 
         public void setLeftChild(BSTNode leftChild) {
             this.leftChild = leftChild;
@@ -192,49 +196,62 @@ public class BSTSearchTree {
 
     public void BreadthFirstTraversal(BSTNode root) {
     	
-//    	BSTNode curNode = root;
-//    	Queue bfQueue = new Queue();
-//    	bfQueue.enQueue(curNode.getData());
-//    	
-//    	while(!bfQueue.isListEmpty()) {
-//    		curNode.setData(bfQueue.deQueue());
-//    		System.out.println(curNode.getData());
-//    		
-//    		if (curNode.getLeftChild() != null) {
-//    			bfQueue.enQueue(curNode.getLeftChild().getData());
-//    		}
-//    		
-//    		if (curNode.getRightChild() != null) {
-//    			bfQueue.enQueue(curNode.getRightChild().getData());
-//    		}
-//    		
-//    	}
-//    	
-    	
     	BSTNode curNode = root;
     	Queue bfQueue = new Queue();
     	bfQueue.enQueue(curNode.getData());
     	
-    	while(curNode != null) {
-//    		System.out.println(curNode.getLeftChild());
-//    		System.out.println(curNode.getRightChild());
-    	
+    	while(!bfQueue.isListEmpty()) {
+    		curNode.setData(bfQueue.deQueue());
+    		System.out.println(curNode.getData());
     		
     		if (curNode.getLeftChild() != null) {
     			bfQueue.enQueue(curNode.getLeftChild().getData());
     		}
+    		
     		if (curNode.getRightChild() != null) {
     			bfQueue.enQueue(curNode.getRightChild().getData());
     		}
-    		if (!bfQueue.isListEmpty()) {
-        		curNode.setData(bfQueue.deQueue());
-        		//System.out.println(curNode.getData());
-        		bfQueue.printQueue();
-        	}else {
-        		curNode = null;
-        		System.out.println("End");
-        	}
+    		
     	}
+    	
+//    	Queue bfQueue = new Queue();
+//    	bfQueue.enQueue(root.getData());
+//    	
+//    	while(!bfQueue.isListEmpty()) {
+//    		BSTNode curNode = root;
+//    		curNode.setData(bfQueue.deQueue());
+//    		System.out.println(bfQueue.isListEmpty());
+//    		
+//    		if (curNode != null) {
+//    			System.out.println(curNode.getData());
+//    			bfQueue.enQueue(curNode.getLeftChild().getData());
+//    			bfQueue.enQueue(curNode.getRightChild().getData());
+//    		}
+//    	}
+//    	BSTNode curNode = root;
+//    	Queue bfQueue = new Queue();
+//    	bfQueue.enQueue(curNode.getData());
+//    	
+//    	while(curNode != null) {
+////    		System.out.println(curNode.getLeftChild());
+////    		System.out.println(curNode.getRightChild());
+//    	
+//    		
+//    		if (curNode.getLeftChild() != null) {
+//    			bfQueue.enQueue(curNode.getLeftChild().getData());
+//    		}
+//    		if (curNode.getRightChild() != null) {
+//    			bfQueue.enQueue(curNode.getRightChild().getData());
+//    		}
+//    		if (!bfQueue.isListEmpty()) {
+//        		curNode.setData(bfQueue.deQueue());
+//        		//System.out.println(curNode.getData());
+//        		bfQueue.printQueue();
+//        	}else {
+//        		curNode = null;
+//        		System.out.println("End");
+//        	}
+//    	}
     	
     }
 
