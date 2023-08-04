@@ -60,7 +60,7 @@ public class BSTSearchTree {
     }
 
     public void search(Currency dollar) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             System.out.println("Empty tree");
         }else {
             System.out.println("Found amount: search(root, dollar)");
@@ -79,27 +79,27 @@ public class BSTSearchTree {
     }
 
     public void insert(Currency dollar) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             root = new BSTNode(dollar);
         } else {
-            RecursiveInsert(root, dollar);
+            insert(root, dollar);
         }
     }
 
-    private void RecursiveInsert(BSTNode root, Currency dollar) {
+    private void insert(BSTNode root, Currency dollar) {
         if (!dollar.isGreater(root.getData())) {
             if (root.getLeftChild() == null) {
                 BSTNode newNode = new BSTNode(dollar);
                 root.setLeftChild(newNode);
             }else {
-                RecursiveInsert(root.getLeftChild(), dollar);
+                insert(root.getLeftChild(), dollar);
             }
         }else if (dollar.isGreater(root.getData())) {
            if (root.getRightChild() == null) {
                BSTNode newNode = new BSTNode(dollar);
                root.setRightChild(newNode);
            } else {
-               RecursiveInsert(root.getRightChild(), dollar);
+               insert(root.getRightChild(), dollar);
            }
         }
 
@@ -110,7 +110,7 @@ public class BSTSearchTree {
     }
 
     private BSTNode delete(Currency dollar, BSTNode root) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         // If dollar value is less than root value go to left child
@@ -134,7 +134,7 @@ public class BSTSearchTree {
 
 
     public Currency getMin() {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         return getMin(root);
@@ -148,7 +148,7 @@ public class BSTSearchTree {
     }
 
     public Currency getMax() {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         return getMax(root);
@@ -162,8 +162,7 @@ public class BSTSearchTree {
     }
 
     public void InOrderTraversal(BSTNode root) {
-
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return;
         }
 
@@ -172,47 +171,45 @@ public class BSTSearchTree {
         InOrderTraversal(root.getRightChild());
     }
 
-    public void PreorderTraversal(BSTNode node) {
-        if (isEmpty()) {
+    public void PreorderTraversal(BSTNode root) {
+        if (isEmpty(root)) {
             return;
         }
 
-        System.out.println(node.getData());
-        PreorderTraversal(node.getLeftChild());
-        PreorderTraversal(node.getRightChild());
+        System.out.println(root.getData());
+        PreorderTraversal(root.getLeftChild());
+        PreorderTraversal(root.getRightChild());
     }
 
-    public void PostorderTraversal(BSTNode node) {
-        if (isEmpty()) {
+    public void PostorderTraversal(BSTNode root) {
+        if (isEmpty(root)) {
             return;
         }
 
-
-        PreorderTraversal(node.getLeftChild());
-        PreorderTraversal(node.getRightChild());
-        System.out.println(node.getData());
-
+        PreorderTraversal(root.getLeftChild());
+        PreorderTraversal(root.getRightChild());
+        System.out.println(root.getData());
     }
 
     public void BreadthFirstTraversal(BSTNode root) {
     	
-    	BSTNode curNode = root;
-    	Queue bfQueue = new Queue();
-    	bfQueue.enQueue(curNode.getData());
-    	
-    	while(!bfQueue.isListEmpty()) {
-    		curNode.setData(bfQueue.deQueue());
-    		System.out.println(curNode.getData());
-    		
-    		if (curNode.getLeftChild() != null) {
-    			bfQueue.enQueue(curNode.getLeftChild().getData());
-    		}
-    		
-    		if (curNode.getRightChild() != null) {
-    			bfQueue.enQueue(curNode.getRightChild().getData());
-    		}
-    		
-    	}
+//    	BSTNode curNode = root;
+//    	Queue bfQueue = new Queue();
+//    	bfQueue.enQueue(curNode.getData());
+//    	
+//    	while(!bfQueue.isListEmpty()) {
+//    		curNode.setData(bfQueue.deQueue());
+//    		System.out.println(curNode.getData());
+//    		
+//    		if (curNode.getLeftChild() != null) {
+//    			bfQueue.enQueue(curNode.getLeftChild().getData());
+//    		}
+//    		
+//    		if (curNode.getRightChild() != null) {
+//    			bfQueue.enQueue(curNode.getRightChild().getData());
+//    		}
+//    		
+//    	}
     	
 //    	Queue bfQueue = new Queue();
 //    	bfQueue.enQueue(root.getData());
@@ -245,7 +242,7 @@ public class BSTSearchTree {
 //    		}
 //    		if (!bfQueue.isListEmpty()) {
 //        		curNode.setData(bfQueue.deQueue());
-//        		//System.out.println(curNode.getData());
+//        		System.out.println(curNode.getData());
 //        		bfQueue.printQueue();
 //        	}else {
 //        		curNode = null;
@@ -253,13 +250,47 @@ public class BSTSearchTree {
 //        	}
 //    	}
     	
+    	BSTNode curNode = root;
+    	Queue bfQueue = new Queue();
+    	bfQueue.enQueue(curNode.getData());
+    	
+    	//while(curNode != null) {
+//    		System.out.println(curNode.getLeftChild());
+//    		System.out.println(curNode.getRightChild());
+    	
+    	for (int i = 0; i < 3; i++) {
+    		System.out.println(curNode.getData());
+    		System.out.println("Left node: " + curNode.getLeftChild().getData());
+    		System.out.println("right node: " + curNode.getRightChild().getData());
+    		if (curNode.getLeftChild() != null) {
+    			System.out.println("Added left");
+    			//bfQueue.enQueue(curNode.getLeftChild().getData());
+    		}
+    		if (curNode.getRightChild() != null) {
+    			//System.out.println(curNode.getData());
+    			System.out.println("Added right");
+    			//bfQueue.enQueue(curNode.getRightChild().getData());
+    		}
+    		curNode.setData(curNode.getLeftChild().getData());
+    		
+//    		if (!bfQueue.isListEmpty()) {
+//        		curNode.setData(bfQueue.deQueue());
+//        		System.out.println(curNode.getData());
+////        		System.out.println("Queue: ");
+////        		bfQueue.printQueue();
+//        	}else {
+//        		curNode = null;
+//        		System.out.println("End");
+//        	}
+    	}
+    	
     }
 
 
 
     public void printBST(BSTNode root, String BSTString) {
 
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return;
         }
 
@@ -269,7 +300,7 @@ public class BSTSearchTree {
 
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty(BSTNode root) {
         if (root == null) {
             return true;
         }
