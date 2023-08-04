@@ -56,7 +56,7 @@ public class BSTSearchTree {
     }
 
     public void search(Currency dollar) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             System.out.println("Empty tree");
         }else {
             System.out.println("Found amount: search(root, dollar)");
@@ -75,27 +75,27 @@ public class BSTSearchTree {
     }
 
     public void insert(Currency dollar) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             root = new BSTNode(dollar);
         } else {
-            RecursiveInsert(root, dollar);
+            insert(root, dollar);
         }
     }
 
-    private void RecursiveInsert(BSTNode root, Currency dollar) {
+    private void insert(BSTNode root, Currency dollar) {
         if (!dollar.isGreater(root.getData())) {
             if (root.getLeftChild() == null) {
                 BSTNode newNode = new BSTNode(dollar);
                 root.setLeftChild(newNode);
             }else {
-                RecursiveInsert(root.getLeftChild(), dollar);
+                insert(root.getLeftChild(), dollar);
             }
         }else if (dollar.isGreater(root.getData())) {
            if (root.getRightChild() == null) {
                BSTNode newNode = new BSTNode(dollar);
                root.setRightChild(newNode);
            } else {
-               RecursiveInsert(root.getRightChild(), dollar);
+               insert(root.getRightChild(), dollar);
            }
         }
 
@@ -106,7 +106,7 @@ public class BSTSearchTree {
     }
 
     private BSTNode delete(Currency dollar, BSTNode root) {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         // If dollar value is less than root value go to left child
@@ -130,7 +130,7 @@ public class BSTSearchTree {
 
 
     public Currency getMin() {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         return getMin(root);
@@ -144,7 +144,7 @@ public class BSTSearchTree {
     }
 
     public Currency getMax() {
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return null;
         }
         return getMax(root);
@@ -158,8 +158,7 @@ public class BSTSearchTree {
     }
 
     public void InOrderTraversal(BSTNode root) {
-
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return;
         }
 
@@ -168,26 +167,24 @@ public class BSTSearchTree {
         InOrderTraversal(root.getRightChild());
     }
 
-    public void PreorderTraversal(BSTNode node) {
-        if (isEmpty()) {
+    public void PreorderTraversal(BSTNode root) {
+        if (isEmpty(root)) {
             return;
         }
 
-        System.out.println(node.getData());
-        PreorderTraversal(node.getLeftChild());
-        PreorderTraversal(node.getRightChild());
+        System.out.println(root.getData());
+        PreorderTraversal(root.getLeftChild());
+        PreorderTraversal(root.getRightChild());
     }
 
-    public void PostorderTraversal(BSTNode node) {
-        if (isEmpty()) {
+    public void PostorderTraversal(BSTNode root) {
+        if (isEmpty(root)) {
             return;
         }
 
-
-        PreorderTraversal(node.getLeftChild());
-        PreorderTraversal(node.getRightChild());
-        System.out.println(node.getData());
-
+        PreorderTraversal(root.getLeftChild());
+        PreorderTraversal(root.getRightChild());
+        System.out.println(root.getData());
     }
 
     public void BreadthFirstTraversal(BSTNode root) {
@@ -242,7 +239,7 @@ public class BSTSearchTree {
 
     public void printBST(BSTNode root, String BSTString) {
 
-        if (isEmpty()) {
+        if (isEmpty(root)) {
             return;
         }
 
@@ -252,7 +249,7 @@ public class BSTSearchTree {
 
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty(BSTNode root) {
         if (root == null) {
             return true;
         }
