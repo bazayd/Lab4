@@ -55,6 +55,25 @@ public class BSTSearchTree {
         BSTNode root = new BSTNode(value);
     }
 
+    public void search(Currency dollar) {
+        if (isEmpty()) {
+            System.out.println("Empty tree");
+        }else {
+            System.out.println("Found amount: search(root, dollar)");
+        }
+    }
+
+    public Currency search(BSTNode root, Currency dollar) {
+
+        if (root.getData().isGreater(dollar)) {
+            return search(root.getLeftChild(), dollar);
+        }else if (dollar.isGreater(root.getData())) {
+            return search(root.getRightChild(), dollar);
+        }else {
+            return root.getData();
+        }
+    }
+
     public void insert(Currency dollar) {
         if (isEmpty()) {
             root = new BSTNode(dollar);
@@ -191,18 +210,7 @@ public class BSTSearchTree {
     	}
     }
 
-    public Currency search(BSTNode root, BSTNode target) {
-        if (isEmpty()) {
-        	return null;
-        }
-        if (root.getData().isGreater(target.getData())) {
-        	return search(root.getLeftChild(), target);
-        }else if (target.getData().isGreater(root.getData())) {
-        	return search(root.getRightChild(), target);
-        }else {
-        	return root.getData();
-        }
-    }
+
 
     public void printBST(BSTNode root, String BSTString) {
 
