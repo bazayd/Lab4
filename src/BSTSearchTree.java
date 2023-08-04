@@ -56,7 +56,7 @@ public class BSTSearchTree {
     }
 
     public void insert(Currency dollar) {
-        if (root == null) {
+        if (isEmpty()) {
             root = new BSTNode(dollar);
         } else {
             RecursiveInsert(root, dollar);
@@ -87,7 +87,7 @@ public class BSTSearchTree {
     }
 
     private BSTNode delete(Currency dollar, BSTNode root) {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         // If dollar value is less than root value go to left child
@@ -111,7 +111,7 @@ public class BSTSearchTree {
 
 
     public Currency getMin() {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         return getMin(root);
@@ -125,7 +125,7 @@ public class BSTSearchTree {
     }
 
     public Currency getMax() {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         return getMax(root);
@@ -140,7 +140,7 @@ public class BSTSearchTree {
 
     public void InOrderTraversal(BSTNode root) {
 
-        if (root == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -150,7 +150,7 @@ public class BSTSearchTree {
     }
 
     public void PreorderTraversal(BSTNode node) {
-        if (node == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -160,7 +160,7 @@ public class BSTSearchTree {
     }
 
     public void PostorderTraversal(BSTNode node) {
-        if (node == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -192,7 +192,7 @@ public class BSTSearchTree {
     }
 
     public Currency search(BSTNode root, BSTNode target) {
-        if (root == null) {
+        if (isEmpty()) {
         	return null;
         }
         if (root.getData().isGreater(target.getData())) {
@@ -206,7 +206,7 @@ public class BSTSearchTree {
 
     public void printBST(BSTNode root, String BSTString) {
 
-        if (root == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -216,6 +216,12 @@ public class BSTSearchTree {
 
     }
 
+    public boolean isEmpty() {
+        if (root == null) {
+            return true;
+        }
+        return false;
+    }
 }
 
 
