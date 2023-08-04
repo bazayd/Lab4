@@ -55,8 +55,27 @@ public class BSTSearchTree {
         BSTNode root = new BSTNode(value);
     }
 
+    public void search(Currency dollar) {
+        if (isEmpty()) {
+            System.out.println("Empty tree");
+        }else {
+            System.out.println("Found amount: search(root, dollar)");
+        }
+    }
+
+    public Currency search(BSTNode root, Currency dollar) {
+
+        if (root.getData().isGreater(dollar)) {
+            return search(root.getLeftChild(), dollar);
+        }else if (dollar.isGreater(root.getData())) {
+            return search(root.getRightChild(), dollar);
+        }else {
+            return root.getData();
+        }
+    }
+
     public void insert(Currency dollar) {
-        if (root == null) {
+        if (isEmpty()) {
             root = new BSTNode(dollar);
         } else {
             RecursiveInsert(root, dollar);
@@ -87,7 +106,7 @@ public class BSTSearchTree {
     }
 
     private BSTNode delete(Currency dollar, BSTNode root) {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         // If dollar value is less than root value go to left child
@@ -111,7 +130,7 @@ public class BSTSearchTree {
 
 
     public Currency getMin() {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         return getMin(root);
@@ -125,7 +144,7 @@ public class BSTSearchTree {
     }
 
     public Currency getMax() {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         }
         return getMax(root);
@@ -140,7 +159,7 @@ public class BSTSearchTree {
 
     public void InOrderTraversal(BSTNode root) {
 
-        if (root == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -150,7 +169,7 @@ public class BSTSearchTree {
     }
 
     public void PreorderTraversal(BSTNode node) {
-        if (node == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -160,7 +179,7 @@ public class BSTSearchTree {
     }
 
     public void PostorderTraversal(BSTNode node) {
-        if (node == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -219,22 +238,11 @@ public class BSTSearchTree {
     	
     }
 
-    public Currency search(BSTNode root, BSTNode target) {
-        if (root == null) {
-        	return null;
-        }
-        if (root.getData().isGreater(target.getData())) {
-        	return search(root.getLeftChild(), target);
-        }else if (target.getData().isGreater(root.getData())) {
-        	return search(root.getRightChild(), target);
-        }else {
-        	return root.getData();
-        }
-    }
+
 
     public void printBST(BSTNode root, String BSTString) {
 
-        if (root == null) {
+        if (isEmpty()) {
             return;
         }
 
@@ -244,6 +252,12 @@ public class BSTSearchTree {
 
     }
 
+    public boolean isEmpty() {
+        if (root == null) {
+            return true;
+        }
+        return false;
+    }
 }
 
 
