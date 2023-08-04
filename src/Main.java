@@ -15,7 +15,8 @@ public class Main {
 
 
 
-
+        System.out.println("BreadthFirst: ");
+        binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
         System.out.println("In Order : ");
         binarySearchTree.InOrderTraversal(binarySearchTree.root);
         System.out.println("Pre Order: ");

@@ -172,23 +172,51 @@ public class BSTSearchTree {
     }
 
     public void BreadthFirstTraversal(BSTNode root) {
+    	
+//    	BSTNode curNode = root;
+//    	Queue bfQueue = new Queue();
+//    	bfQueue.enQueue(curNode.getData());
+//    	
+//    	while(!bfQueue.isListEmpty()) {
+//    		curNode.setData(bfQueue.deQueue());
+//    		System.out.println(curNode.getData());
+//    		
+//    		if (curNode.getLeftChild() != null) {
+//    			bfQueue.enQueue(curNode.getLeftChild().getData());
+//    		}
+//    		
+//    		if (curNode.getRightChild() != null) {
+//    			bfQueue.enQueue(curNode.getRightChild().getData());
+//    		}
+//    		
+//    	}
+//    	
+    	
     	BSTNode curNode = root;
     	Queue bfQueue = new Queue();
-    	
+    	bfQueue.enQueue(curNode.getData());
     	
     	while(curNode != null) {
+//    		System.out.println(curNode.getLeftChild());
+//    		System.out.println(curNode.getRightChild());
+    	
+    		
     		if (curNode.getLeftChild() != null) {
     			bfQueue.enQueue(curNode.getLeftChild().getData());
     		}
     		if (curNode.getRightChild() != null) {
     			bfQueue.enQueue(curNode.getRightChild().getData());
     		}
-    		if (root != null) {
+    		if (!bfQueue.isListEmpty()) {
         		curNode.setData(bfQueue.deQueue());
+        		//System.out.println(curNode.getData());
+        		bfQueue.printQueue();
         	}else {
         		curNode = null;
+        		System.out.println("End");
         	}
     	}
+    	
     }
 
     public Currency search(BSTNode root, BSTNode target) {
