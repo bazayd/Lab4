@@ -81,14 +81,23 @@ public class Main {
                     System.out.println("Enter dollar amount to remove: ");
                     double amountRemove = scanner.nextDouble();
                     scanner.nextLine();
-                    binarySearchTree.delete(new Dollar(amountRemove));
-                    System.out.println("Node $" + amountRemove + " Removed from Binary Tree");
+                    if (binarySearchTree.search(new Dollar(amountRemove))) {
+                        System.out.println("$" + amountRemove + " Removed.");
+                        binarySearchTree.delete(new Dollar(amountRemove));
+                    }else {
+                        System.out.println("Dollar amount not found!");
+                    }
+                    System.out.println();
                     break;
                 case 3:
                     System.out.println("Enter dollar amount to search for: ");
                     double amountSearch = scanner.nextDouble();
                     scanner.nextLine();
-                    binarySearchTree.search(new Dollar(amountSearch));
+                    if (binarySearchTree.search(new Dollar(amountSearch))) {
+                        System.out.println("$" + amountSearch + " Found!");
+                    }else {
+                        System.out.println("$" + amountSearch + " Not found.");
+                    }
                     break;
                 case 4:
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/output.txt"))) {

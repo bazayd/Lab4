@@ -4,6 +4,8 @@ import java.util.*;
 
 public class BSTSearchTree {
 
+
+
     class BSTNode {
 
         // Data attribute & 2 pointer attributes (Left and Right Child)
@@ -61,45 +63,43 @@ public class BSTSearchTree {
         BSTNode root = new BSTNode(value);
     }
 
-    //Search Function 
-    public void search(Currency dollar) {
-        if (isEmpty(root)) {
-            System.out.println("Empty tree");
-        }else {
-            System.out.println("Found amount: ");
-            search(root, dollar);
-        }
+
+    // Using recursive function, returns boolean value to verify dollar amount
+    public boolean search(Currency dollar) {
+        return searchRec(root, dollar);
     }
 
     /*
-     * search bst for a value
-     * 
-     * pre: root is the root of the bst, dolalr is the target value
-     * 
-     * post: prints out the node and not found if it is not found
-     * 
-     */
-    public void search(BSTNode root, Currency dollar) {
+    //     * search bst for a value
+    //     *
+    //     * pre: root is the root of the bst, dollar is the target value
+    //     *
+    //     * post: prints out the node and not found if it is not found
+    //     *
+    //     */
+    private boolean searchRec(BSTNode root, Currency dollar) {
+        if (root == null) {
+            return false; // Base case: element not found
+        }
 
-    	if (root != null) {
-
-    		if (root.getData().isGreater(dollar)) {
-                search(root.getLeftChild(), dollar);
-            }else if (dollar.isGreater(root.getData())) {
-                search(root.getRightChild(), dollar);
-            }else {
-            	System.out.println(root.getData());
-            }
-                
-            
-    		
-    	}else {
-    		System.out.println("Not found");
-    	}
-        
+        if (dollar.isEqual(root.data)) {
+            return true; // Element found
+        } else if (dollar.isGreater(root.data)) {
+            return searchRec(root.getRightChild(), dollar); // Recur on the right subtree
+        } else {
+            return searchRec(root.getLeftChild(), dollar); // Recur on the left subtree
+        }
     }
 
-    //insert method
+
+    /*Insert method that uses recursive insert function
+    *
+    * Pre: Dollar of Currency type
+    *
+    * Post: checks for empty tree and uses recursion to inert
+    *
+    *Return: none, only inserts values into the binary tree
+     */
     public void insert(Currency dollar) {
         if (isEmpty(root)) {
             root = new BSTNode(dollar);
@@ -109,10 +109,13 @@ public class BSTSearchTree {
     }
 
     /*
-     * pre: dollar that needs to be inserted with reference to the root
+    *Uses Recursion to check binary tree and find the right place to insert dollar amount
+    *
+     * Pre: dollar that needs to be inserted with reference to the root
      * 
      * post: dolalr is inserted into the tree
      *
+     * Return: None, only inserts into the tree
      */
     private void insert(BSTNode root, Currency dollar) {
         if (!dollar.isGreater(root.getData())) {
@@ -133,39 +136,53 @@ public class BSTSearchTree {
 
     }
 
-    
-    //function that deletes a desired node
-    public void delete(Currency dollar) {
-        root = delete(dollar, root);
+
+    /*Deletes a desired dollar amount with recursion
+    *
+     * pre: dollar of Currency/Dollar type
+     * 
+     * post:dollar node is deleted if not found, root is unchanged
+     *
+     * Return: true or false depending on if the root is null or not
+     */
+
+    public boolean delete(Currency dollar) {
+        root = deleteRec(root, dollar);
+        return root != null;
     }
 
     /*
-     * pre: root is reference to node to be deleted dolalr is the node to be deleted
-     * 
-     * post:dollar node is deleted if not found, root is unchanged
-     * return true is node is deleted, false if not found 
+    *Uses Recursion to check binary tree for dollar amount and deletes it
+    *
+    * Pre: root of type BSTNode and dollar of type Currency/Dollar
+    *
+    * Post: Replaces dollar amount with another value depending on if the amount is greater or less than, as
+    * well as if the tree has one or no child
+    *
+    * Return: value of root, depending on what it is set to
      */
-    
-    private BSTNode delete(Currency dollar, BSTNode root) {
-        if (isEmpty(root)) {
-            return null;
+    private BSTNode deleteRec(BSTNode root, Currency dollar) {
+        if (root == null) {
+            return null; // Base case: element not found, return null
         }
-        // If dollar value is less than root value go to left child
-        if (!dollar.isGreater(root.getData())) {
-            root.setLeftChild(delete(dollar, root.getLeftChild()));
-            // if dollar value is greater than root value check right child
-        } else if (dollar.isGreater(root.getData())) {
-            root.setRightChild(delete(dollar, root.getRightChild()));
-        }else {
-            // Cases for leaf nodes or one child cases
+
+        if (dollar.isGreater(root.data)) {
+            root.rightChild = deleteRec(root.getRightChild(), dollar); // Recur on the right subtree
+        } else if (dollar.isGreater(root.data)) {
+            root.leftChild = deleteRec(root.getLeftChild(), dollar); // Recur on the left subtree
+        } else {
+            // Case 1 and 2: Node with one or no child
             if (root.getLeftChild() == null) {
                 return root.getRightChild();
             } else if (root.getRightChild() == null) {
                 return root.getLeftChild();
             }
-            root.setData(getMax(root.getLeftChild()));
-            root.setLeftChild(delete(root.getData(), root.getLeftChild()));
+
+            // Case 3: Node with two children
+            root.data = getMin(root.getRightChild()); // Replace the node with the minimum value in the right subtree
+            root.rightChild = deleteRec(root.getRightChild(), root.data); // Delete the node with the minimum value
         }
+
         return root;
     }
 
@@ -316,6 +333,15 @@ public class BSTSearchTree {
     	
     }
 
+    /*
+    *Breadth First Traversal Writer uses the same method of Breadth first Traversal to write into the OUtput.txt file
+    *
+    * Pre: Writer of BufferedWriter type
+    *
+    * Post: Goes through binary tree with BreadthFirstTraversal and visits each node and writes to the txt file
+    *
+    *Return: None, void type and only writes to file
+     */
     public void breadthFirstTraversalWriter(BufferedWriter writer) throws IOException{
         BSTNode curNode = root;
         Queue bfQueue = new Queue();
@@ -349,8 +375,15 @@ public class BSTSearchTree {
     }
 
 
-    //print BST function
-    
+    /*
+    *Prints out the binary search tree in order with recursion
+    *
+    * Pre: root of type BSTNode, BSTString of type String
+    *
+    * Post: Goes through entire BST and through recursion to print each node
+    *
+    * Return: None, will print out to the screen everytime function is called.
+     */
     public void printBST(BSTNode root, String BSTString) {
 
         if (isEmpty(root)) {
@@ -363,7 +396,16 @@ public class BSTSearchTree {
 
     }
 
-    // method that finds out if the tree is empty
+    /*
+    *Checks to see if binary tree is empty or not
+    *
+    * Pre: root of type BSTNode
+    *
+    * Post: checks off the root node to see if it is null
+    *
+    * Return: True or false
+    *
+     */
     public boolean isEmpty(BSTNode root) {
         if (root == null) {
             return true;
