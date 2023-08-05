@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.function.BinaryOperator;
 import java.util.*;
 
@@ -183,6 +185,14 @@ public class BSTSearchTree {
         InOrderTraversal(root.getRightChild());
     }
 
+    public void inOrderTraversalWriter(BufferedWriter writer, BSTNode root) throws IOException {
+        if (!isEmpty(root)) {
+            inOrderTraversalWriter(writer, root.getLeftChild());
+            writer.write(root.getData() + " ");
+            inOrderTraversalWriter(writer, root.getRightChild());
+        }
+    }
+
     /*
      * traverse binary tree in node-left-right sequence
      * 
@@ -198,6 +208,14 @@ public class BSTSearchTree {
         System.out.println(root.getData());
         PreorderTraversal(root.getLeftChild());
         PreorderTraversal(root.getRightChild());
+    }
+
+    public void preOrderTraversalWriter(BufferedWriter writer, BSTNode root) throws IOException{
+        if (!isEmpty(root)) {
+            writer.write(root.getData() + " ");
+            preOrderTraversalWriter(writer, root.getLeftChild());
+            preOrderTraversalWriter(writer, root.getRightChild());
+        }
     }
 
     /*
@@ -217,6 +235,13 @@ public class BSTSearchTree {
         System.out.println(root.getData());
     }
 
+    public void postOrderTraversalWriter(BufferedWriter writer, BSTNode root) throws IOException {
+        if (!isEmpty(root)) {
+            preOrderTraversalWriter(writer, root.getLeftChild());
+            preOrderTraversalWriter(writer, root.getRightChild());
+            writer.write(root.getData() + " ");
+        }
+    }
     /*
      * BreadthFirstTraversal Code
      * 
@@ -258,6 +283,38 @@ public class BSTSearchTree {
         	}
     	}
     	
+    }
+
+    public void breadthFirstTraversalWriter(BufferedWriter writer) throws IOException{
+        BSTNode curNode = root;
+        Queue bfQueue = new Queue();
+
+        //loop while curnode is not null
+        while(curNode != null) {
+
+            //print the data
+            writer.write(curNode.getData() + " ");
+            //check left and right, if they are not null add htem to queue
+            if (curNode.getLeftChild() != null) {
+
+                bfQueue.enQueue(curNode.getLeftChild());
+            }
+            if (curNode.getRightChild() != null) {
+
+                bfQueue.enQueue(curNode.getRightChild());
+            }
+
+            //check if queue is not empty
+            if (!bfQueue.isListEmpty()) {
+
+                //set curNode as dequeued element
+                curNode = bfQueue.deQueue();
+
+
+            }else {
+                curNode = null;
+            }
+        }
     }
 
 

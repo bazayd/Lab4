@@ -16,7 +16,7 @@ public class Stack extends SinglyLinkedList{
         super();
     }
 
-    public void push(Currency obj) {
+    public void push(BSTSearchTree.BSTNode currency) {
         /*
          * increase object count
          * create new node
@@ -29,7 +29,7 @@ public class Stack extends SinglyLinkedList{
          * end is top/head of stack
          */
         this.setCount(this.getCount() + 1);
-        LinkNode newNode = new LinkNode(obj);
+        LinkNode newNode = new LinkNode(currency);
 
         LinkNode top = getStart();
         newNode.setNext(top);
@@ -58,9 +58,9 @@ public class Stack extends SinglyLinkedList{
          */
         this.setCount(this.getCount() - 1);
         LinkNode topNode = getStart();
-        Currency removed = topNode.getData();
+        Currency removed = topNode.getData().getData();
         setStart(topNode.getNext());
-        return topNode.getData();
+        return topNode.getData().getData();
 
     }
 
@@ -79,7 +79,7 @@ public class Stack extends SinglyLinkedList{
          * 	returns currency of top node
          */
         LinkNode top = getStart();
-        return top.getData();
+        return top.getData().getData();
 
     }
 
