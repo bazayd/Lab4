@@ -166,6 +166,13 @@ public class BSTSearchTree {
         return node.getData();
     }
 
+    /*
+     *  inorder traversal: left-node-right
+     *  
+     *  pre: entry node of a tree or subtree
+     *  
+     *  post: each node has been processed in order
+     */
     public void InOrderTraversal(BSTNode root) {
         if (isEmpty(root)) {
             return;
@@ -176,6 +183,13 @@ public class BSTSearchTree {
         InOrderTraversal(root.getRightChild());
     }
 
+    /*
+     * traverse binary tree in node-left-right sequence
+     * 
+     * pre: root is the entry node of a tree or subtree
+     * 
+     * post: each node has been processed in order
+     */
     public void PreorderTraversal(BSTNode root) {
         if (isEmpty(root)) {
             return;
@@ -186,6 +200,13 @@ public class BSTSearchTree {
         PreorderTraversal(root.getRightChild());
     }
 
+    /*
+     * traverse a binary tree in left-right-node sequence
+     * 
+     * pre: root is the entry node of a tree or subtree
+     * 
+     * post: each node has been processed in order
+     */
     public void PostorderTraversal(BSTNode root) {
         if (isEmpty(root)) {
             return;
@@ -196,74 +217,52 @@ public class BSTSearchTree {
         System.out.println(root.getData());
     }
 
+    /*
+     * BreadthFirstTraversal Code
+     * 
+     * pre: root is node to be processed
+     * 
+     * post: tree has been processed
+     */
     public void BreadthFirstTraversal(BSTNode root) {
     	
-
+    	//store the root and create a queue
     	BSTNode curNode = root;
     	Queue bfQueue = new Queue();
-    	//bfQueue.enQueue(curNode);
-    	System.out.println(curNode.getData());
+
+    	//loop while curnode is not null
     	while(curNode != null) {
-    	
+    		
+    		//print the data
+    		System.out.println(curNode.getData());
+    		
+    		//check left and right, if they are not null add htem to queue
     		if (curNode.getLeftChild() != null) {
-    			//System.out.println("Left Data: " + curNode.getLeftChild().getData());
+
     			bfQueue.enQueue(curNode.getLeftChild());
     		}
     		if (curNode.getRightChild() != null) {
-    			//System.out.println("Right Data: " + curNode.getRightChild().getData());
+    			
     			bfQueue.enQueue(curNode.getRightChild());
     		}
+    		
+    		//check if queue is not empty
     		if (!bfQueue.isListEmpty()) {
-        		//curNode.setData(bfQueue.deQueue());
+    			
+        		//set curNode as dequeued element
     			curNode = bfQueue.deQueue();
-    			//System.out.println("print node");
-        		System.out.println(curNode.getData());
+    			
 
         	}else {
         		curNode = null;
         	}
     	}
     	
-//    	BSTNode curNode = root;
-//    	Queue bfQueue = new Queue();
-//    	bfQueue.enQueue(curNode.getData());
-//    	
-//    	//while(curNode != null) {
-////    		System.out.println(curNode.getLeftChild());
-////    		System.out.println(curNode.getRightChild());
-//    	
-//    	for (int i = 0; i < 3; i++) {
-//    		System.out.println(curNode.getData());
-////    		System.out.println("Left node: " + curNode.getLeftChild().getData());
-////    		System.out.println("right node: " + curNode.getRightChild().getData());
-//    		if (curNode.getLeftChild() != null) {
-//    			System.out.println("Added left");
-//    			//bfQueue.enQueue(curNode.getLeftChild().getData());
-//    		}
-//    		if (curNode.getRightChild() != null) {
-//    			//System.out.println(curNode.getData());
-//    			System.out.println("Added right");
-//    			//bfQueue.enQueue(curNode.getRightChild().getData());
-//    		}
-//    		
-//    		curNode = curNode.getLeftChild();
-    		//curNode.setData(curNode.getLeftChild().getData());
-    		
-//    		if (!bfQueue.isListEmpty()) {
-//        		curNode.setData(bfQueue.deQueue());
-//        		System.out.println(curNode.getData());
-////        		System.out.println("Queue: ");
-////        		bfQueue.printQueue();
-//        	}else {
-//        		curNode = null;
-//        		System.out.println("End");
-//        	}
-    	//}
-    	
     }
 
 
-
+    //print BST function
+    
     public void printBST(BSTNode root, String BSTString) {
 
         if (isEmpty(root)) {
@@ -276,6 +275,7 @@ public class BSTSearchTree {
 
     }
 
+    // method that finds out if the tree is empty
     public boolean isEmpty(BSTNode root) {
         if (root == null) {
             return true;
