@@ -1,6 +1,5 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.function.BinaryOperator;
 import java.util.*;
 
 public class BSTSearchTree {
@@ -73,11 +72,11 @@ public class BSTSearchTree {
     }
 
     /*
-     * bearch bst for a value
+     * search bst for a value
      * 
      * pre: root is the root of the bst, dolalr is the target value
      * 
-     * post: prints out the node and not not found if it is not found
+     * post: prints out the node and not found if it is not found
      * 
      */
     public void search(BSTNode root, Currency dollar) {
@@ -113,6 +112,7 @@ public class BSTSearchTree {
      * pre: dollar that needs to be inserted with reference to the root
      * 
      * post: dolalr is inserted into the tree
+     *
      */
     private void insert(BSTNode root, Currency dollar) {
         if (!dollar.isGreater(root.getData())) {
