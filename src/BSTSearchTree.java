@@ -46,6 +46,11 @@ public class BSTSearchTree {
         public BSTNode getRightChild() {
             return rightChild;
         }
+
+		public boolean isEqual(Currency currency) {
+			// TODO Auto-generated method stub
+			return false;
+		}
     }
 
     protected BSTNode root;
@@ -193,85 +198,56 @@ public class BSTSearchTree {
 
     public void BreadthFirstTraversal(BSTNode root) {
     	
-//    	BSTNode curNode = root;
-//    	Queue bfQueue = new Queue();
-//    	bfQueue.enQueue(curNode.getData());
-//    	
-//    	while(!bfQueue.isListEmpty()) {
-//    		curNode.setData(bfQueue.deQueue());
-//    		System.out.println(curNode.getData());
-//    		
-//    		if (curNode.getLeftChild() != null) {
-//    			bfQueue.enQueue(curNode.getLeftChild().getData());
-//    		}
-//    		
-//    		if (curNode.getRightChild() != null) {
-//    			bfQueue.enQueue(curNode.getRightChild().getData());
-//    		}
-//    		
-//    	}
+
+    	BSTNode curNode = root;
+    	Queue bfQueue = new Queue();
+    	//bfQueue.enQueue(curNode);
+    	System.out.println(curNode.getData());
+    	while(curNode != null) {
     	
-//    	Queue bfQueue = new Queue();
-//    	bfQueue.enQueue(root.getData());
-//    	
-//    	while(!bfQueue.isListEmpty()) {
-//    		BSTNode curNode = root;
-//    		curNode.setData(bfQueue.deQueue());
-//    		System.out.println(bfQueue.isListEmpty());
-//    		
-//    		if (curNode != null) {
-//    			System.out.println(curNode.getData());
-//    			bfQueue.enQueue(curNode.getLeftChild().getData());
-//    			bfQueue.enQueue(curNode.getRightChild().getData());
-//    		}
-//    	}
+    		if (curNode.getLeftChild() != null) {
+    			//System.out.println("Left Data: " + curNode.getLeftChild().getData());
+    			bfQueue.enQueue(curNode.getLeftChild());
+    		}
+    		if (curNode.getRightChild() != null) {
+    			//System.out.println("Right Data: " + curNode.getRightChild().getData());
+    			bfQueue.enQueue(curNode.getRightChild());
+    		}
+    		if (!bfQueue.isListEmpty()) {
+        		//curNode.setData(bfQueue.deQueue());
+    			curNode = bfQueue.deQueue();
+    			//System.out.println("print node");
+        		System.out.println(curNode.getData());
+
+        	}else {
+        		curNode = null;
+        	}
+    	}
+    	
 //    	BSTNode curNode = root;
 //    	Queue bfQueue = new Queue();
 //    	bfQueue.enQueue(curNode.getData());
 //    	
-//    	while(curNode != null) {
+//    	//while(curNode != null) {
 ////    		System.out.println(curNode.getLeftChild());
 ////    		System.out.println(curNode.getRightChild());
 //    	
-//    		
+//    	for (int i = 0; i < 3; i++) {
+//    		System.out.println(curNode.getData());
+////    		System.out.println("Left node: " + curNode.getLeftChild().getData());
+////    		System.out.println("right node: " + curNode.getRightChild().getData());
 //    		if (curNode.getLeftChild() != null) {
-//    			bfQueue.enQueue(curNode.getLeftChild().getData());
+//    			System.out.println("Added left");
+//    			//bfQueue.enQueue(curNode.getLeftChild().getData());
 //    		}
 //    		if (curNode.getRightChild() != null) {
-//    			bfQueue.enQueue(curNode.getRightChild().getData());
+//    			//System.out.println(curNode.getData());
+//    			System.out.println("Added right");
+//    			//bfQueue.enQueue(curNode.getRightChild().getData());
 //    		}
-//    		if (!bfQueue.isListEmpty()) {
-//        		curNode.setData(bfQueue.deQueue());
-//        		System.out.println(curNode.getData());
-//        		bfQueue.printQueue();
-//        	}else {
-//        		curNode = null;
-//        		System.out.println("End");
-//        	}
-//    	}
-    	
-    	BSTNode curNode = root;
-    	Queue bfQueue = new Queue();
-    	bfQueue.enQueue(curNode.getData());
-    	
-    	//while(curNode != null) {
-//    		System.out.println(curNode.getLeftChild());
-//    		System.out.println(curNode.getRightChild());
-    	
-    	for (int i = 0; i < 3; i++) {
-    		System.out.println(curNode.getData());
-    		System.out.println("Left node: " + curNode.getLeftChild().getData());
-    		System.out.println("right node: " + curNode.getRightChild().getData());
-    		if (curNode.getLeftChild() != null) {
-    			System.out.println("Added left");
-    			//bfQueue.enQueue(curNode.getLeftChild().getData());
-    		}
-    		if (curNode.getRightChild() != null) {
-    			//System.out.println(curNode.getData());
-    			System.out.println("Added right");
-    			//bfQueue.enQueue(curNode.getRightChild().getData());
-    		}
-    		curNode.setData(curNode.getLeftChild().getData());
+//    		
+//    		curNode = curNode.getLeftChild();
+    		//curNode.setData(curNode.getLeftChild().getData());
     		
 //    		if (!bfQueue.isListEmpty()) {
 //        		curNode.setData(bfQueue.deQueue());
@@ -282,7 +258,7 @@ public class BSTSearchTree {
 //        		curNode = null;
 //        		System.out.println("End");
 //        	}
-    	}
+    	//}
     	
     }
 

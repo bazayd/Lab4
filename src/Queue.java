@@ -18,7 +18,7 @@ public class Queue extends SinglyLinkedList{
     }
 
 
-    public void enQueue(Currency currency) {
+    public void enQueue(BSTSearchTree.BSTNode curNode) {
         /*
          *Pre: currency of type Currency
          *
@@ -39,7 +39,7 @@ public class Queue extends SinglyLinkedList{
          *   count of queue increases
          */
 
-        LinkNode node = new LinkNode(currency);
+        LinkNode node = new LinkNode(curNode);
 
         if (isListEmpty()) {
             start = node;
@@ -51,7 +51,7 @@ public class Queue extends SinglyLinkedList{
         count++;
     }
 
-    public Currency deQueue() {
+    public BSTSearchTree.BSTNode deQueue() {
 
         /*
          *Pre: No parameter taken
@@ -80,7 +80,7 @@ public class Queue extends SinglyLinkedList{
             throw new IllegalArgumentException("Cannot deQueue from an empty Queue.");
         }
 
-        Currency currency = start.getData();
+        BSTSearchTree.BSTNode currency = start.getData();
 
 
         start = start.getNext();
@@ -93,7 +93,7 @@ public class Queue extends SinglyLinkedList{
         return currency;
     }
 
-    public Currency peekFront() {
+    public BSTSearchTree.BSTNode peekFront() {
         /*
          *Pre: No parameter taken
          *
@@ -111,7 +111,7 @@ public class Queue extends SinglyLinkedList{
          *  otherwise null is returned if there is no currency or node
          */
 
-        Currency currency = start.getData();
+        BSTSearchTree.BSTNode currency = start.getData();
 
         if (currency != null) {
             return currency;
@@ -120,7 +120,7 @@ public class Queue extends SinglyLinkedList{
 
     }
 
-    public Currency peekRear() {
+    public BSTSearchTree.BSTNode peekRear() {
         /*
          *Pre: No parameter taken
          *
@@ -138,7 +138,7 @@ public class Queue extends SinglyLinkedList{
          */
 
 
-        Currency currency = end.getData();
+        BSTSearchTree.BSTNode currency = end.getData();
 
         if (currency != null) {
             return currency;

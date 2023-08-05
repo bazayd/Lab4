@@ -10,18 +10,18 @@
  */
 public class LinkNode {
 
-    private Currency data;
+    private BSTSearchTree.BSTNode data;
 
     private LinkNode next;
 
-    public LinkNode(Currency data) {
-        this.data = data;
+    public LinkNode(BSTSearchTree.BSTNode currency) {
+        this.data = currency;
         this.next = null;
     }
 
 
 
-    public Currency getData() {
+    public BSTSearchTree.BSTNode getData() {
         return data;
     }
 
@@ -29,7 +29,7 @@ public class LinkNode {
         return next;
     }
 
-    public void setData(Currency data) {
+    public void setData(BSTSearchTree.BSTNode data) {
         this.data = data;
     }
 

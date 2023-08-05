@@ -53,7 +53,7 @@ public class SinglyLinkedList {
     }
 
 
-    public void addCurrency(Currency currency, int index) {
+    public void addCurrency(BSTSearchTree.BSTNode currency, int index) {
         /*
          *Pre: currency of type Currency, index of type integer
          *
@@ -107,7 +107,7 @@ public class SinglyLinkedList {
         count++;
     }
 
-    public Currency removeCurrency(Currency currency) {
+    public BSTSearchTree.BSTNode removeCurrency(Currency currency) {
         /*
          *Pre: currency of type Currency
          *
@@ -172,7 +172,7 @@ public class SinglyLinkedList {
         return null;
     }
 
-    public Currency removeCurrency(int index) {
+    public BSTSearchTree.BSTNode removeCurrency(int index) {
         /*
          *Pre: index of type integer
          *
@@ -205,7 +205,7 @@ public class SinglyLinkedList {
         }
 
         if (index == 0) {
-            Currency currency = start.getData();
+            BSTSearchTree.BSTNode currency = start.getData();
             start = start.getNext();
             count--;
             if (count == 0) {
@@ -260,7 +260,7 @@ public class SinglyLinkedList {
         return -1;
     }
 
-    public Currency getCurrency(int index) {
+    public BSTSearchTree.BSTNode getCurrency(int index) {
         /*
          * Pre: index of type integer
          *

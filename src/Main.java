@@ -44,7 +44,9 @@ public class Main {
 
                 new Dollar(57.12),
                 new Dollar(23.44),
-                new Dollar(87.43)
+                new Dollar(87.43),
+                new Dollar(68.99),
+                new Dollar(111.22)
         };
 
         for (Currency dollar: currencies) {
