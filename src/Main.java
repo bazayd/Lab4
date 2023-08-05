@@ -8,10 +8,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+    	//scanner and bst
         Scanner scanner = new Scanner(System.in);
         BSTSearchTree binarySearchTree = new BSTSearchTree();
 
 
+        //currencies array
         Currency[] currencies = {
                 new Dollar(57.12),
                 new Dollar(23.44),
@@ -37,16 +39,15 @@ public class Main {
 
 
 
-
+        // insert currency data into the bst
         for (Currency dollar : currencies) {
             binarySearchTree.insert(dollar);
         }
 
 
+        //different traversals
         System.out.println("BreadthFirst: ");
         binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
-
-
         System.out.println("In Order : ");
         binarySearchTree.InOrderTraversal(binarySearchTree.root);
         System.out.println("Pre Order: ");
@@ -56,7 +57,8 @@ public class Main {
 
         boolean quit = false;
 
-
+        
+        //prompting the user
         while (!quit) {
             System.out.println("\nChoose your option: ");
             System.out.println("(1) Add Node");
@@ -68,6 +70,7 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
+            //switch statement for the different choices
             switch (choice) {
                 case 1:
                     System.out.println("Enter dollar amount for new node: ");

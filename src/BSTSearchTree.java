@@ -28,10 +28,6 @@ public class BSTSearchTree {
         public Currency getData() {
             return data;
         }
-        
-//        public void setRoot(BSTNode root) {
-//        	this.root = root;
-//        }
 
         public void setLeftChild(BSTNode leftChild) {
             this.leftChild = leftChild;
@@ -66,25 +62,45 @@ public class BSTSearchTree {
         BSTNode root = new BSTNode(value);
     }
 
+    //Search Function 
     public void search(Currency dollar) {
         if (isEmpty(root)) {
             System.out.println("Empty tree");
         }else {
-            System.out.println("Found amount: search(root, dollar)");
+            System.out.println("Found amount: ");
+            search(root, dollar);
         }
     }
 
-    public Currency search(BSTNode root, Currency dollar) {
+    /*
+     * bearch bst for a value
+     * 
+     * pre: root is the root of the bst, dolalr is the target value
+     * 
+     * post: prints out the node and not not found if it is not found
+     * 
+     */
+    public void search(BSTNode root, Currency dollar) {
 
-        if (root.getData().isGreater(dollar)) {
-            return search(root.getLeftChild(), dollar);
-        }else if (dollar.isGreater(root.getData())) {
-            return search(root.getRightChild(), dollar);
-        }else {
-            return root.getData();
-        }
+    	if (root != null) {
+
+    		if (root.getData().isGreater(dollar)) {
+                search(root.getLeftChild(), dollar);
+            }else if (dollar.isGreater(root.getData())) {
+                search(root.getRightChild(), dollar);
+            }else {
+            	System.out.println(root.getData());
+            }
+                
+            
+    		
+    	}else {
+    		System.out.println("Not found");
+    	}
+        
     }
 
+    //insert method
     public void insert(Currency dollar) {
         if (isEmpty(root)) {
             root = new BSTNode(dollar);
@@ -93,6 +109,11 @@ public class BSTSearchTree {
         }
     }
 
+    /*
+     * pre: dollar that needs to be inserted with reference to the root
+     * 
+     * post: dolalr is inserted into the tree
+     */
     private void insert(BSTNode root, Currency dollar) {
         if (!dollar.isGreater(root.getData())) {
             if (root.getLeftChild() == null) {
@@ -112,10 +133,19 @@ public class BSTSearchTree {
 
     }
 
+    
+    //function that deletes a desired node
     public void delete(Currency dollar) {
         root = delete(dollar, root);
     }
 
+    /*
+     * pre: root is reference to node to be deleted dolalr is the node to be deleted
+     * 
+     * post:dollar node is deleted if not found, root is unchanged
+     * return true is node is deleted, false if not found 
+     */
+    
     private BSTNode delete(Currency dollar, BSTNode root) {
         if (isEmpty(root)) {
             return null;
@@ -139,7 +169,8 @@ public class BSTSearchTree {
         return root;
     }
 
-
+    
+    //getters for min and max
     public Currency getMin() {
         if (isEmpty(root)) {
             return null;
