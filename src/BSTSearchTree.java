@@ -1,3 +1,13 @@
+/*
+ * Authors: Nicholas Kang, Brandon Arriaga
+ * Group 10 JAVA
+ *
+ * Lab 4
+ *
+ * Purpose: Creates currency object and left and right childs of BSTNode type, then uses 
+ * these attributes to create Binary Search Trees and traverse through them.
+ *
+ */
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.*;
