@@ -43,27 +43,17 @@ public class Main {
         }
 
 
-        //different traversals
-        System.out.println("BreadthFirst: ");
-        binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
-        System.out.println("In Order : ");
-        binarySearchTree.InOrderTraversal(binarySearchTree.root);
-        System.out.println("Pre Order: ");
-        binarySearchTree.PreorderTraversal(binarySearchTree.root);
-        System.out.println("Post Order: ");
-        binarySearchTree.PostorderTraversal(binarySearchTree.root);
-
         boolean quit = false;
 
-        
-        //prompting the user
+
         while (!quit) {
             System.out.println("\nChoose your option: ");
             System.out.println("(1) Add Node");
             System.out.println("(2) Delete Node");
             System.out.println("(3) Search for Node");
             System.out.println("(4) Print Traversals to TXT File");
-            System.out.println("(5) Quit");
+            System.out.println("(5) Print out Traversals");
+            System.out.println("(6) Quit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -100,7 +90,7 @@ public class Main {
                     }
                     break;
                 case 4:
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/output.txt"))) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
                         System.out.println("Breadth-first traversal being written.. ");
                         writer.write("Breadth First Traversal: ");
                         binarySearchTree.breadthFirstTraversalWriter(writer);
@@ -122,6 +112,33 @@ public class Main {
                         e.printStackTrace();
                     }
                 case 5:
+                    System.out.println("Which traversal would you like to see: " +
+                            "\n(1) Breadth-First Traversal" +
+                            "\n(2) In Order Traversal" +
+                            "\n(3) Pre Order Traversal" +
+                            "\n(4) Post Order Traversal");
+                    int traversalChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (traversalChoice) {
+                        case 1:
+                            System.out.println("BreadthFirst: ");
+                            binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
+                            break;
+                        case 2:
+                            System.out.println("In Order : ");
+                            binarySearchTree.InOrderTraversal(binarySearchTree.root);
+                            break;
+                        case 3:
+                            System.out.println("Pre Order: ");
+                            binarySearchTree.PreorderTraversal(binarySearchTree.root);
+                            break;
+                        case 4:
+                            System.out.println("Post Order: ");
+                            binarySearchTree.PostorderTraversal(binarySearchTree.root);
+                            break;
+                    }
+                    break;
+                case 6:
                     quit = true;
             }
         }
