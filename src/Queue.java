@@ -2,7 +2,7 @@
  * Authors: Nicholas Kang, Brandon Arriaga
  * Group 10 JAVA
  *
- * Lab 3
+ * Lab 4
  *
  * Purpose: The Queue is derived from the linked list, can enQueue elements to the end of a Queue,
  * deQueue from the start of the Queue, and peek the front and back of the Queue. It uses the start and end

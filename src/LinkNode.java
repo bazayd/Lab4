@@ -2,7 +2,7 @@
  * Authors: Nicholas Kang, Brandon Arriaga
  * Group 10 JAVA
  *
- * Lab 3
+ * Lab 4
  *
  * Purpose: LinkNode creates nodes of type currency with a LinkNode next pointer. It allows Linked Lists to access
  * the currency elements and the next currency it points to.

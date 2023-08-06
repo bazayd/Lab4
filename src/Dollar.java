@@ -2,7 +2,7 @@
  * Authors: Nicholas Kang, Brandon Arriaga
  * Group 10 JAVA
  *
- * Lab 2
+ * Lab 4
  *
  * Purpose: Creates object of Dollar, that is used in Currency and currency array as a type of currency
  * that can be added and subtracted.

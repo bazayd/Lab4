@@ -2,7 +2,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+/*
+ * Authors: Nicholas Kang, Brandon Arriaga
+ * Group 10 JAVA
+ *
+ * Lab 4
+ *
+ * Purpose: Creates a currencies array with dollar objects to seed a Binary Search tree along with
+ * having user input, for the user to insert, remove, and search for dollar amounts. As well as
+ * writing traversals of the tree to a text file and printing out those traversals to see them in action.
+ *
+ */
 public class Main {
     public static void main(String[] args) throws IOException {
 
