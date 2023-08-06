@@ -116,7 +116,8 @@ public class Main {
                             "\n(1) Breadth-First Traversal" +
                             "\n(2) In Order Traversal" +
                             "\n(3) Pre Order Traversal" +
-                            "\n(4) Post Order Traversal");
+                            "\n(4) Post Order Traversal" +
+                            "\n(5) Print all Traversals");
                     int traversalChoice = scanner.nextInt();
                     scanner.nextLine();
                     switch (traversalChoice) {
@@ -134,6 +135,17 @@ public class Main {
                             break;
                         case 4:
                             System.out.println("Post Order: ");
+                            binarySearchTree.PostorderTraversal(binarySearchTree.root);
+                            break;
+                        case 5:
+                            System.out.println("All traversals: ");
+                            System.out.println("BreadthFirst Traversals: ");
+                            binarySearchTree.BreadthFirstTraversal(binarySearchTree.root);
+                            System.out.println("In Order Traversal: ");
+                            binarySearchTree.InOrderTraversal(binarySearchTree.root);
+                            System.out.println("Pre Order Traversal: ");
+                            binarySearchTree.PreorderTraversal(binarySearchTree.root);
+                            System.out.println("Post Order Traversal: ");
                             binarySearchTree.PostorderTraversal(binarySearchTree.root);
                             break;
                     }
