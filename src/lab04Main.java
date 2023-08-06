@@ -13,7 +13,7 @@ import java.util.Scanner;
  * writing traversals of the tree to a text file and printing out those traversals to see them in action.
  *
  */
-public class Main {
+public class lab04Main {
     public static void main(String[] args) throws IOException {
 
     	//scanner and bst
